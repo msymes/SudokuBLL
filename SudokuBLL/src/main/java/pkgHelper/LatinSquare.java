@@ -57,9 +57,19 @@ public class LatinSquare {
 		/*go through each value in arr2
 		 * check that each value is in arr1*/
 		boolean hasAllValues = false;
+		boolean bFound = false;
 		for (int j = 0; j < arr2.length; j++) {
-			
+			for (int i = 0; i < arr1.length; i++) {
+				if (arr1[i]==arr2[j]) {
+					bFound = true;
+				}
+				else {
+					bFound = false;
+					break;
+				}
+			}
 		}
+		hasAllValues = bFound;
 		return hasAllValues;
 	}
 	
@@ -83,7 +93,13 @@ public class LatinSquare {
 	
 	public boolean ContainsZero() {
 		boolean ContainsZero = false;
-		
+		for (int iRow=0; iRow < this.LatinSquare.length; iRow++) {
+			for (int iColumn=0; iColumn < this.LatinSquare.length; iColumn++) {
+				if (LatinSquare[iRow][iColumn]==0){
+					return true;
+				}
+			}
+		}
 		return ContainsZero;
 	}
 	}

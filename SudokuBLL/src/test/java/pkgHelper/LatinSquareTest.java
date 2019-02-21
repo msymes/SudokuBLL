@@ -85,6 +85,23 @@ public class LatinSquareTest {
 		boolean bActual = LatinSquare.hasAllValues(arr1, arr2);
 		assertEquals(bExpected,bActual);
 	}
+	@Test
+	public void ContainsZero_Test1() {
+		int[][] puzzle = {{1,2,3},{2,3,1},{3,1,2}};
+		LatinSquare ls = new LatinSquare(puzzle);
+		boolean bExpected = false;
+		boolean bActual = ls.ContainsZero();
+		assertEquals(bExpected,bActual);
 	}
-}
+	@Test
+	public void ContainsZero_Test2() {
+		int[][] puzzle = {{1,2,3},{0,3,1},{3,1,2}};
+		LatinSquare ls = new LatinSquare(puzzle);
+		boolean bExpected = true;
+		boolean bActual = ls.ContainsZero();
+		assertEquals(bExpected,bActual);
+	}
+	}
+	
+
 
