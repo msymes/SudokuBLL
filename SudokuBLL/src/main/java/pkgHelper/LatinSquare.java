@@ -23,7 +23,7 @@ public class LatinSquare {
 		LatinSquare = latinSquare;
 	}
 	
-	public boolean hasDuplicates(int [] arr){
+	public static boolean hasDuplicates(int [] arr){
 		boolean hasDuplicates = false;
 		
 		if (arr == null)
