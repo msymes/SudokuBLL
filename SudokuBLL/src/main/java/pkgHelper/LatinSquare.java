@@ -73,20 +73,33 @@ public class LatinSquare {
 		return hasAllValues;
 	}
 	
-	public int[] getColumn(int iColumn) {
-		int[] getColumn = {};
-		
+	public int[] getColumn(int jColumn) {
+		int rowLength = this.LatinSquare.length;
+		int[] getColumn = new int[rowLength];
+		for (int i=0; i < this.LatinSquare[jColumn].length; i++) {/*idk how to make the .length for 
+		just the column of latin square*/
+			getColumn[i]=this.LatinSquare[i][jColumn];	
+		}
 		return getColumn;
 	}
 	
 	public int[] getRow(int iRow) {
-		int[] getRow = {};
-		
+		int[] getRow = this.LatinSquare[iRow];
 		return getRow;
 	}
 	
 	public boolean isLatinSquare() {
 		boolean isLatinSquare = false;
+		
+		int rowLength = this.LatinSquare.length;
+		for (int i = 0 ; i < rowLength; i++) {
+			if(hasDuplicates(getColumn(i))) {
+				isLatinSquare = false;
+			}
+			if(hasDuplicates(getRow(i))) {
+				isLatinSquare = false;
+			}
+		}
 		
 		return isLatinSquare;
 	}
