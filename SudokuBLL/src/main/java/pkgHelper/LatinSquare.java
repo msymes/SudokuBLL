@@ -25,14 +25,15 @@ public class LatinSquare {
 	
 	public static boolean hasDuplicates(int [] arr){
 		boolean hasDuplicates = false;
+		int[] sortedArray = Arrays.copyOf(arr,  arr.length);
 		
 		if (arr == null)
 			return false;
 		Arrays.sort(arr);
 		
-		for (int i = 0; i< arr.length -1; i++)
+		for (int i = 0; i< sortedArray.length -1; i++)
 		{
-			if (arr[i] == arr[i+1])
+			if (sortedArray[i] == sortedArray[i+1])
 			{
 				hasDuplicates = true;
 				break;
