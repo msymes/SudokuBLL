@@ -27,8 +27,10 @@ public class LatinSquare {
 		boolean hasDuplicates = false;
 		int[] sortedArray = Arrays.copyOf(arr,  arr.length);
 		
-		if (arr == null)
-			return false;
+		if (arr == null) {
+			hasDuplicates = false;
+		}
+		
 		Arrays.sort(arr);
 		
 		for (int i = 0; i< sortedArray.length -1; i++)
@@ -100,7 +102,17 @@ public class LatinSquare {
 			if(hasDuplicates(getRow(i))) {
 				isLatinSquare = false;
 			}
+			for (int i=1; i< LatinSquare.length; i++) {
+				if(!hasAllValues(getRow(i),getColumn(0))) {
+					isLatinSquare = false;
+				}
+			}
+			for (int j=1; j< LatinSquare.length; j++) {
+				if(!hasAllValues(getRow(0),getColumn(j))) {
+					isLatinSquare = false;
+				}
 		}
+		
 		
 		return isLatinSquare;
 	}
