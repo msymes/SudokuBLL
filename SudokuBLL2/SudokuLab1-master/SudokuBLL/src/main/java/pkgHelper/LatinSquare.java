@@ -3,7 +3,9 @@ package pkgHelper;
 import java.util.Arrays;
 
 public class LatinSquare {
-
+	private boolean bIgnoreZero;
+	private ArrayList<PuzzleViolation> PV;
+	
 	/**
 	 * LatinSquare - two dimensional array that's the core of the puzzle
 	 * 
@@ -35,6 +37,14 @@ public class LatinSquare {
 		this.LatinSquare = puzzle;
 	}
 
+	protected void AddPuzzleViolation(PuzzleViolation pv) {
+
+	}
+	
+	protected void ClearPuzzleViolation() {
+		
+	}
+	
 	/**
 	 * ContainsZero - return 'true' if any element in the LatinSquare is a zero
 	 * 
@@ -121,6 +131,9 @@ public class LatinSquare {
 		return LatinSquare;
 	}
 
+	protected ArrayList<PuzzleViolation> getPV(){
+		
+	}
 	/**
 	 * getRow - return a one-dimension array from a given row in the LatinSquare<br>
 	 * 
@@ -182,6 +195,10 @@ public class LatinSquare {
 
 	}
 
+	protected boolean hasDuplicates() {
+		return false;
+	}
+	
 	/**
 	 * Pass in a one-dimension array, pass back true if there is a duplicate value
 	 * 

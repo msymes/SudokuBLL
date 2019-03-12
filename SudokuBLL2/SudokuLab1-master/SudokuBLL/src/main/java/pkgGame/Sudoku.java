@@ -5,7 +5,7 @@ import java.util.Arrays;
 import pkgHelper.LatinSquare;
 
 public class Sudoku extends LatinSquare {
-	private int iSize; /*the length of the hieght of the puzzle*/
+	private int iSize; /*the length of the height of the puzzle*/
 	private int iSqrtSize; /*the square root of iSize*/
 	
 	
@@ -39,11 +39,28 @@ public class Sudoku extends LatinSquare {
 	}
 	
 	protected int[] getRegion(int iRegionNbr) {
-		return null;
+		/**using the remainder of the region/sqrtSize*sqrt size
+		 * gets you the starting range of the region
+		 */
+		int[][] puzzle = getPuzzle(); /**what is proper syntax**/
+		int[] region = new int[iSize];
+		int count = 0;
+
+		for (int iRow = 0; iRow<iSqrtSize; iRow++) {
+			for (int iCol =0; iCol<iSqrtSize; iCol++) {
+				int i = (iRegionNbr%iSqrtSize)*iSqrtSize +iRow;
+				int j = (iRegionNbr%iSqrtSize)*iSqrtSize + iCol; 
+				region[count]= puzzle[i][j];
+				count++;
+			}
+		}
+		return region;
 	}
 	
 	protected int[] getRegion(int Col, int Row) {
-		return null;
+		/*first you need to find what region its actually in*/
+		int r = (Col%iSqrtSize)+((Row%iSqrtSize)*iSqrtSize); /*the region number*/
+		return getRegion(r); /*idk if this is the right syntax*/
 	}
 	
 	/**
