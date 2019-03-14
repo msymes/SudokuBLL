@@ -121,4 +121,6 @@ public class LatinSquareTest {
 		
 		assertFalse(LS.isLatinSquare());
 	}
+	
+	
 }

@@ -9,7 +9,7 @@ public class Sudoku extends LatinSquare {
 	private int iSqrtSize; /*the square root of iSize*/
 	
 	
-	public Sudoku() {
+	/*DONE*/public Sudoku() {
 		super();
 	}
 	
@@ -48,7 +48,7 @@ public class Sudoku extends LatinSquare {
 
 		for (int iRow = 0; iRow<iSqrtSize; iRow++) {
 			for (int iCol =0; iCol<iSqrtSize; iCol++) {
-				int i = (iRegionNbr%iSqrtSize)*iSqrtSize +iRow;
+				int i = (iRegionNbr/iSqrtSize)*iSqrtSize +iRow;
 				int j = (iRegionNbr%iSqrtSize)*iSqrtSize + iCol; 
 				region[count]= puzzle[i][j];
 				count++;
@@ -59,10 +59,27 @@ public class Sudoku extends LatinSquare {
 	
 	protected int[] getRegion(int Col, int Row) {
 		/*first you need to find what region its actually in*/
-		int r = (Col%iSqrtSize)+((Row%iSqrtSize)*iSqrtSize); /*the region number*/
-		return getRegion(r); /*idk if this is the right syntax*/
+		int r = (Col/iSqrtSize)+((Row/iSqrtSize)*iSqrtSize); /*the region number*/
+		return getRegion(r); 
 	}
 	
+	@Override
+	public boolean hasDuplicates() {
+		boolean  hasDuplicates = false;
+		if(super.hasDuplicates()) {
+			hasDuplicates=true;
+		}
+		else {
+			for (int r = 0; r<this.iSize; r++ ) {
+				int[] region = getRegion(r);
+				if (hasDuplicates(region)) {
+					hasDuplicates=true;
+				}
+			}
+		}
+		return hasDuplicates;
+	}
+
 	/**
 	 * If the puzzle is a LatinSquare... and each value of each region exists in the first row
 	 * of the puzzle
@@ -79,6 +96,16 @@ public class Sudoku extends LatinSquare {
 	 * @return true
 	 */
 	protected boolean isPartialSudoku() {
+		setbIgnoreZero(true);
+		boolean isPartialSudoku = true;
+		
+		if (!isLatinSquare()) {
+			isPartialSudoku = false;
+		}
+		if (hasDuplicates()) {
+			isPartialSudoku = false;
+		}
+		
 		return false;
 	}
 	
@@ -90,7 +117,13 @@ public class Sudoku extends LatinSquare {
 	 * @return - true if the given value is possible
 	 */
 	protected boolean isValueValid(int iValue, int Col, int Row) {
-		return false;
+		boolean isValueValid = true;
+		if (doesElementExist(getRow(Row),iValue)||
+		(doesElementExist(getColumn(Col),iValue))||
+		(doesElementExist(getRegion(Col,Row),iValue))) {
+			isValueValid = false;
+		}
+		return isValueValid;
 	}
 
 }
