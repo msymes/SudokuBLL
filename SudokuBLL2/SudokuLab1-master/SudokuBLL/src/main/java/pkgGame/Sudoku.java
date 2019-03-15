@@ -38,7 +38,7 @@ public class Sudoku extends LatinSquare {
 		return super.getLatinSquare();
 	}
 	
-	protected int[] getRegion(int iRegionNbr) {
+	protected int[] getRegion(int iRegionNbr){
 		/**using the remainder of the region/sqrtSize*sqrt size
 		 * gets you the starting range of the region
 		 */
@@ -46,6 +46,14 @@ public class Sudoku extends LatinSquare {
 		int[] region = new int[iSize];
 		int count = 0;
 
+		if ((iRegionNbr+1>iSize)) {
+			try {
+				throw new Exception("Bad Region Call");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		for (int iRow = 0; iRow<iSqrtSize; iRow++) {
 			for (int iCol =0; iCol<iSqrtSize; iCol++) {
 				int i = (iRegionNbr/iSqrtSize)*iSqrtSize +iRow;
@@ -65,6 +73,7 @@ public class Sudoku extends LatinSquare {
 	
 	@Override
 	public boolean hasDuplicates() {
+		
 		boolean  hasDuplicates = false;
 		if(super.hasDuplicates()) {
 			hasDuplicates=true;
@@ -99,14 +108,14 @@ public class Sudoku extends LatinSquare {
 		setbIgnoreZero(true);
 		boolean isPartialSudoku = true;
 		
-		if (!isLatinSquare()) {
-			isPartialSudoku = false;
-		}
 		if (hasDuplicates()) {
 			isPartialSudoku = false;
 		}
+		if(!ContainsZero()) {
+			isPartialSudoku =false;
+		}
 		
-		return false;
+		return isPartialSudoku;
 	}
 	
 	/**

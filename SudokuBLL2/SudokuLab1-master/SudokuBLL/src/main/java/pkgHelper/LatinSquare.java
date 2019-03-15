@@ -2,7 +2,7 @@ package pkgHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import org.apache.commons.lang.ArrayUtils;
 
 public class LatinSquare {
 	private boolean bIgnoreZero;
@@ -66,25 +66,16 @@ public class LatinSquare {
 		return false;
 	}
 	
-	private int[] RemoveZeros(int[] arr) {
-		int zeros = 0;
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] == 0)
-				zeros++;
-		}
-		int[] noZeroArray = new int[arr.length - zeros];
-		int index = 0;
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] != 0)
-				noZeroArray[index] = arr[i];
-			index++;
+	public int[] RemoveZeros(int[] arr) {
+		int[] noZeroArray = Arrays.copyOf(arr, arr.length);
+		while (ArrayUtils.contains(noZeroArray,0)); {
+			noZeroArray = ArrayUtils.removeElement(noZeroArray,0);
 		}
 		return noZeroArray;
-
 	}
 
-	/*DONE*/public boolean hasDuplicates(int[] arr) {
-		
+	/*DONE*/protected final boolean hasDuplicates(int[] arr) {
+		setbIgnoreZero(true);
 		if (isbIgnoreZero()) {
 			arr = RemoveZeros(arr);
 		}
@@ -108,12 +99,14 @@ public class LatinSquare {
 		boolean hasDuplicates = false;
 		
 		for (int i = 0; i < LatinSquare.length; i++) {
-			if (hasDuplicates(getRow(i)))
+			if (hasDuplicates(getRow(i))) {
 				hasDuplicates=true;
+			}
 		}
 		for (int j = 0; j < LatinSquare.length; j++) {
-			if (hasDuplicates(getColumn(j)))
+			if (hasDuplicates(getColumn(j))) {
 				hasDuplicates=true;
+			}
 		}
 		return hasDuplicates;
 
