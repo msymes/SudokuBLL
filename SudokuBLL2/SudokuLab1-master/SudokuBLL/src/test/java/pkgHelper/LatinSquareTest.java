@@ -31,6 +31,13 @@ public class LatinSquareTest {
 		assertEquals(bHasDuplicates, true);
 
 	}
+	@Test /*Test without arg*/
+	public void hasDuplicates_test3() {
+		int[][] puzzle = {{1,1},{2,3}};
+		LatinSquare LS = new LatinSquare(puzzle);
+		boolean hasDuplicates = LS.hasDuplicates();
+		assertEquals(hasDuplicates, true);
+	}
 
 	@Test
 	public void doesElementExist_Test1() {

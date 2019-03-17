@@ -9,13 +9,18 @@ public class Sudoku extends LatinSquare {
 	private int iSqrtSize; /*the square root of iSize*/
 	
 	
-	/*DONE*/public Sudoku() {
+	public Sudoku() {
 		super();
 	}
 	
 	public Sudoku(int iSize) {
 		if ((int)Math.sqrt(iSize)!=Math.sqrt(iSize)){
-			/* idk how to do this the exception */
+			try {
+				throw new Exception("Invalid Size");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else {
 			this.iSize=iSize;
@@ -26,7 +31,12 @@ public class Sudoku extends LatinSquare {
 	public Sudoku(int[][] latinSquare) {
 		super(latinSquare);
 		if ((int)Math.sqrt(latinSquare.length)!=Math.sqrt(latinSquare.length)) {
-			/*dont know how to do exception*/
+			try {
+				throw new Exception("Invalid Size");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else {
 			this.iSize=latinSquare.length;
@@ -96,7 +106,24 @@ public class Sudoku extends LatinSquare {
 	 * @return true, if its a complete Sudoku
 	 */
 	protected boolean isSudoku() {
-		return false;
+		setbIgnoreZero(false);
+		boolean isSudoku = true;
+		
+		if (hasDuplicates()) {
+			isSudoku = false;
+		}
+		
+		if (ContainsZero()) {
+			isSudoku = false;
+		}
+		
+		for (int i =0; i<iSize;i++) {
+			if (!hasAllValues(getRegion(i),getRow(0))) {
+				isSudoku = false;
+				break;
+			}
+		}
+		return isSudoku;
 	}
 	
 	/**

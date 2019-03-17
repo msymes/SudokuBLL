@@ -16,4 +16,5 @@ public enum ePuzzleViolation {
 		}
 		return valueOf;
 	}
+	/* the method for values() is given implicitly so we dont need it*/
 }

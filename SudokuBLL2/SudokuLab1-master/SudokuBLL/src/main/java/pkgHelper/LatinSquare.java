@@ -10,22 +10,22 @@ public class LatinSquare {
 	
 	private int[][] LatinSquare;
 
-	/*DONE*/public LatinSquare() {
+	public LatinSquare() {
 	}
 
-	/*DONE*/public LatinSquare(int[][] puzzle) {
+	public LatinSquare(int[][] puzzle) {
 		this.LatinSquare = puzzle;
 	}
 
-	/*DONE*/public int[][] getLatinSquare() {
+	public int[][] getLatinSquare() {
 		return LatinSquare;
 	}
 	
-	/*DONE*/public void setLatinSquare(int[][] latinSquare) {
+	public void setLatinSquare(int[][] latinSquare) {
 		LatinSquare = latinSquare;
 	}
 	
-	/*DONE*/public int[] getColumn(int iCol) {
+	public int[] getColumn(int iCol) {
 
 		// TODO: Return a given column from LatinSquare
 
@@ -37,7 +37,7 @@ public class LatinSquare {
 		return Col;
 	}
 	
-	/*DONE*/public int[] getRow(int iRow) {
+	public int[] getRow(int iRow) {
 		// TODO: Return a given row from LatinSquare
 
 		int[] Row = new int[this.LatinSquare.length];
@@ -47,15 +47,15 @@ public class LatinSquare {
 		return Row;
 	}
 	
-	/*DONE*/public boolean isbIgnoreZero() {
+	public boolean isbIgnoreZero() {
 		return this.bIgnoreZero;
 	}
 	
-	/*DONE*/protected void setbIgnoreZero(boolean bIgnoreZero) {
+	protected void setbIgnoreZero(boolean bIgnoreZero) {
 		this.bIgnoreZero = bIgnoreZero;
 	}
 	
-	/*DONE*/public boolean ContainsZero() {
+	public boolean ContainsZero() {
 		for (int i = 0; i < LatinSquare.length; i++) {
 			for (int j = 0; j < LatinSquare.length; j++) {
 				if (LatinSquare[i][j] == 0) {
@@ -74,8 +74,7 @@ public class LatinSquare {
 		return noZeroArray;
 	}
 
-	/*DONE*/protected final boolean hasDuplicates(int[] arr) {
-		setbIgnoreZero(true);
+	protected final boolean hasDuplicates(int[] arr) {
 		if (isbIgnoreZero()) {
 			arr = RemoveZeros(arr);
 		}
@@ -112,7 +111,7 @@ public class LatinSquare {
 
 	}
 	
-	/*DONE*/public boolean doesElementExist(int[] arr, int iValue) {
+	public boolean doesElementExist(int[] arr, int iValue) {
 		// TODO: Return 'true' if iValue is found in arr
 
 		boolean doesElementExist = false;
@@ -125,7 +124,7 @@ public class LatinSquare {
 		return doesElementExist;
 	}
 
-	/*DONE*/public boolean hasAllValues(int[] arr1, int[] arr2) {
+	public boolean hasAllValues(int[] arr1, int[] arr2) {
 		// TODO: Return 'true' if every element from arr2 is in arr1
 
 		boolean hasAllValues = true;
@@ -149,7 +148,7 @@ public class LatinSquare {
 
 	}
 
-	/*DONE*/public boolean isLatinSquare() {
+	public boolean isLatinSquare() {
 
 		boolean isLatinSquare = true;
 		// TODO: Return 'true' if...
